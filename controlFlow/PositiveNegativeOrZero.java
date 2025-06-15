@@ -1,6 +1,6 @@
 package controlFlow;
 import java.util.Scanner;
-public class Question8 {
+public class PositiveNegativeOrZero {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter a number: ");
