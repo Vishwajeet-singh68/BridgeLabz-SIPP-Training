@@ -1,4 +1,4 @@
-public class Q2_NullPointerDemo {
+public class NullPointerDemo {
     // Method to generate NullPointerException
     public static void generateNullPointer() {
         String text = null;
