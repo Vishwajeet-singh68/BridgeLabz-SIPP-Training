@@ -1,5 +1,3 @@
-package Methods;
-
 import java.util.*;
 public class TrigonometryCalculator {
     public double[] calculateTrigonometricFunctions(double angle){

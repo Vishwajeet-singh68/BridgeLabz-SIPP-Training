@@ -1,4 +1,3 @@
-package Methods;
 public class SpringOrNot{
 	public static void main(String args[]){
 		int month=Integer.parseInt(args[0]);

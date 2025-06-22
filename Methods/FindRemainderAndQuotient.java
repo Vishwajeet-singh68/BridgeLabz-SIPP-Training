@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Question 3: Divide chocolates among children
+// Divide chocolates among children
 public class FindRemainderAndQuotient {
     public static int[] findRemainderAndQuotient(int number, int divisor) {
         int[] result = new int[2];
