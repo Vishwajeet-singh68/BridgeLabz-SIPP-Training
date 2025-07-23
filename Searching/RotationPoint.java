@@ -1,5 +1,3 @@
-// Q12_rotationpoint.java
-// Find the Rotation Point in a Rotated Sorted Array
 public class RotationPoint {
     public static int findRotationPoint(int[] arr) {
         int left = 0, right = arr.length - 1;
