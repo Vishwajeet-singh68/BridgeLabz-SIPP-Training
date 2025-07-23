@@ -1,4 +1,4 @@
-public class Q3_stringbuffer {
+public class stringbuffer {
     public static String concatStrings(String[] arr) {
         StringBuffer sb = new StringBuffer();
         for (String s : arr) {
