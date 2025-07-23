@@ -1,6 +1,4 @@
-// Q4_compare.java
-// Compare StringBuffer with StringBuilder for String Concatenation
-public class Q4_compare {
+public class Compare {
     public static void main(String[] args) {
         int n = 1000000;
         String text = "hello";
