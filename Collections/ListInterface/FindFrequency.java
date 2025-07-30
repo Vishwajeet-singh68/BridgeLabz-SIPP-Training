@@ -1,4 +1,4 @@
-package Collections;
+package Collections.ListInterface;
 import java.util.*;
 
 public class FindFrequency {

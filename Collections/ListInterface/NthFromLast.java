@@ -1,4 +1,4 @@
-package Collections;
+package Collections.ListInterface;
 
 class ll {
     class Node {
