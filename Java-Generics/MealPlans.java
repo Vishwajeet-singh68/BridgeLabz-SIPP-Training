@@ -1,3 +1,4 @@
+package JavaGenerics;
 interface MealPlan {
     void displayPlan();
 }
