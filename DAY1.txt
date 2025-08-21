@@ -1,0 +1,120 @@
+Qustion 1:-
+
+start
+define class Pet
+{
+ATTRIBUTE name
+ATTRIBUTE age
+ATRRIBUTE color
+
+
+CONSTRUCTOR(name,age,color)
+{
+SET this.name=name
+SET this.age=age
+SET this.color
+}
+
+
+}
+define class Dog extends Pet
+{
+ATTRIBUTE breed
+ATTRIBUTE sound
+}
+define class Cat extends Pet
+{
+ATTRIBUTE breed
+ATTRIBUTE sound
+}
+define class Bird extends Pet
+{
+ATTRIBUTE sound
+}
+end
+
+
+//Question 2:-
+start
+define class Member
+{
+ATTRIBUTE Name
+ATTRIBUTE Id
+ATTRIBUTE Membership_date
+
+
+Method checkValidity(){
+SET difference = currentDate - Membership_date
+RETURN difference < 1 THEN true otherwise false
+
+}
+}
+end
+
+
+//Question 3:
+
+START 
+DEFINE class UndoRevert
+{
+ATTRIBUTE text
+ATTRIBUTE originalText
+ATTRIBUTE undoStack (stack of strings)
+
+CONSTRUCTOR(text,originalText)
+{
+SET this.text=text
+SET originalText=text
+INITIALIZE undoStack AS empty stack 
+}
+
+METHOD addText(newText)
+{
+PUSH text INTO undoStack
+ASSIGN text + newText INTO text
+}
+
+METHOD Undo()
+{
+IF undoStack IS NOT empty THEN
+ASSIGN text TO POP FROM undoStack
+}
+
+METHOD revert()
+{
+SET text TO originalText
+CLEAR undoStack
+}
+}
+END
+
+
+//Question 4:-
+
+START
+DEFINE class CallCenter
+{
+ATTRIBUTE employees (dequeue of Strings)
+
+METHOD addFront(employeeName)
+{
+INSERT employeeName INTO employees FROM FRONT 
+}
+
+METHOD addLast(employeeName)
+{
+INSERT employeeName INTO employees FROM LAST
+}
+
+METHOD deleteFirst()
+{
+REMOVE employeeName FROM FIRST
+}
+
+METHOD deleteLast()
+{
+REMOVE employeeName FROM LAST
+}
+}
+END
+
