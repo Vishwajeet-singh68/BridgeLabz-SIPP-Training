@@ -1,0 +1,306 @@
+Question 1:-
+part 1:-
+
+START
+DEFINE ENUM TrafficLight
+ 	ATTRIBUTES: RED,GREEN,YELLOW
+END ENUM
+DEFINE Class TrafficLightController
+ 	ATTRIBUTE currentLight
+ 	ATRRIBUTE lastChangeTime
+ 
+ 	CONSTRUCTOR(currentTime)
+ 		ASSIGN currentLight=TrafficLight.RED
+ 		ASSIGN this.lastChangeTime =currentTime
+ 	END CONSTRUCTOR
+ 	ATTRIBUTE durationForRed
+ 	ATTRIBUTE durationForGreen
+ 	ATTRIBUTE durationForYELOW
+
+	ASSIGN durationForRed=5000
+ 	ASSIGN durationForGreen=3000
+ 	ASSIGN durationForYellow=4000
+
+ 	METHOD switchLight()
+ 		ATTRIBUTE now
+ 		ASSIGN now=currentTime
+ 
+ 		ATTRIBUTE timePassed=now-lastChangeTime
+ 
+ 		IF currentLight IS RED AND timePassed IS Greater equal to  durationForRed THEN
+ 			ASSIGN currentLight=GREEN
+ 			ASSIGN lastChangeTime=currentTime
+ 		END IF
+ 		IF currentLight IS GREEN AND timePassed IS Greater equal to durationForGREEN THEN
+ 			ASSIGN currentLight=YELLOW
+ 			ASSIGN lastChangeTime=currentTime
+ 		END IF
+ 		IF currentLight IS YELLOW AND timePassed IS Greater equal to durationForYellw THEN
+ 			ASSIGN currentLight=RED
+ 			ASSIGN lastChangeTime=currentTime
+ 		END IF
+ 	END METHOD
+ 	METHOD getCurrentLight()
+ 		PRINT currentLight
+ 	END METHOD
+ 
+ 	METHOD main()
+ 		OBJECT controller=TrafficLightController(systemTime)
+ 		FOR i FROM 0 TO 10
+ 			CALL switchLight() OF controller
+ 			PRINT "Current Light is: "+CALL controller.getCurrentLight()
+ 			WAIT 1000
+ 		END FOR
+ 	END METHOD
+END CLASS
+END
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+ 
+part 2:-
+START
+DEFINE INTERFACE Crop
+    METHOD waterRequirement()
+    METHOD harvesting()
+END INTERFACE
+
+DEFINE CLASS Rice IMPLEMENTS Crop
+    METHOD waterRequirement()
+        PRINT "Rice requires about 1200 mm water per season."
+    END METHOD
+
+    METHOD harvesting()
+        PRINT "Rice is harvested using combine harvesters."
+    END METHOD
+END CLASS
+
+DEFINE CLASS Wheat IMPLEMENTS Crop
+    METHOD waterRequirement()
+        PRINT "Wheat requires about 450 mm water per season."
+    END METHOD
+
+    METHOD harvesting()
+        PRINT "Wheat is harvested using sickles or harvesters."
+    END METHOD
+END CLASS
+
+METHOD main()
+    OBJECT rice=Rice()
+    OBJECT wheat=Wheat()
+
+    CALL riceCrop.waterRequirement()
+    CALL riceCrop.harvesting()
+
+    CALL wheatCrop.waterRequirement()
+    CALL wheatCrop.harvesting()
+END METHOD
+END
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////
+Question2:-
+
+part 1:
+
+START
+DEFINE CLASS OnlineQuizeTime
+ 	METHOD main()
+ 		ATTRIBUTE totalQuestion
+ 		ATTRIBUTE timePerQuestion
+ 		ATTRIBUTE warningTime
+
+ 		ASSIGN totalQuestion=5
+ 		ASSIGN timePerQuestion=100000
+ 		ASSIGN warningTime=5000
+ 
+ 		ATTRIBUTE timeSlots (Array OF Integer)
+ 
+ 		FOR i FROM 0 to totalQuestion-1
+ 			ASSIGN timeslot at each index=timePerQuestion
+ 		END FOR
+ 
+ 		ATTRIBUTE time
+ 		FOR each elements of timeSlots
+ 			ASSIGN time=elements
+ 			FOR t FROM time to 0
+ 				IF t IS equals TO warningTime THEN
+ 					PRINT "5 Second Left!"
+ 				END IF
+
+ 				IF time IS greater than 0 THEN
+ 					PRINT t+"is remaining..."
+ 				END IF
+
+ 				IF t IS equals TO time THEN
+ 					PRINT "Start Quiz"
+ 				END IF
+
+ 				ELSE
+ 				    	PRINT "time's up for Question"+(i+1)
+ 				END ELSE
+ 			END FOR
+ 		END FOR
+ 	END METHOD
+END CLASS
+END
+
+part 2:
+
+START
+DEFINE CLASS Job
+ 	ATTRIBUTE name
+ 	ATTRIBUTE deadlines
+ 	ATTRIBUTE processingTime
+ 	CONSTRUCTOR(name,deadlines,processingTime)
+ 		ASSIGN this.name=name
+ 		ASSIGN this.deadline=deadlines
+ 	END CONSTRUCTOR
+END CLASS
+DEFINE CLASS JobScheduler
+ 	METHOD main()
+ 		comparator(job a,job b)
+ 			IF deadline of a job IS NOT equal TO deadline of b job THEN
+ 				RETURN deadline of job a-deadline of job b
+ 			END IF
+ 			ELSE
+ 				RETURN processing time of job a-processing time of job b
+ 			END ELSE
+ 		END job
+ 		ATTRIBUTE jobQueue (PRIORIY QUEUE OF Job)
+ 		ASSIGN All jobs which are comparing in comparator
+ 		OBJECT job1=Job("job1",5,3)
+ 		OBJECT job2=Job("job2",6,2)
+ 		OBJECT job3=Job("job3",7,9)
+ 		ADD job1 object into jobQueue
+ 		ADD job2 object into jobQueue
+ 		ADD job3 object into jobQueue
+
+ 	END METHOD
+END CLASS
+END
+
+Question 3:-
+part 1:
+
+START
+DEFINE CLASS Item
+ 	ATTRIBUTE name
+ 	ATTRIBUTE price
+ 	CONSTRUCTOR(name,price)
+ 		ASSIGN this.name=name
+ 		ASSIGN this.price=price
+ 	END CONSTRUCTOR
+ 
+END CLASS
+DEFINE CLASS ShoppingCart
+ 	ATTRIBUTE cart (LIST OF Item)
+ 
+ 	CONSTRUCTOR()
+ 		ASSIGN this.cart=list
+ 	END CONSTRUCTOR
+
+ 	METHOD setCart(item)
+ 		ADD item TO cart
+ 	END METHOD
+ 
+ 	METHOD name()
+ 		PRINT name
+ 	END METHOD
+ 
+ 	METHOD getPrice()
+ 		RETURN price
+ 	END METHOD
+END CLASS
+
+DEFINE CLASS StoreCartSystem
+ 	METHOD Main()
+ 		OBJECT ob1=Item("Shirt",1500)
+ 		OBJECT ob2=Item("Jeans",2000)
+
+ 		OBJECT cart = ShoppingCart()
+		CALL cart's setCart TO obj1
+		CALL cart's setCart TO obj2
+ 	 
+ 		ATTRIBUTE totalPrice
+ 		ASSIGN totalPRice=0
+ 		GENERIC METHOD calculatePrice(cart's List OF generic type)
+ 			FOR each element in List of cart of genric type
+ 				ASSIGN totalPrice TO getPrice of every element + totalPrice
+ 			END FOR
+
+ 		END GENERIC METHOD
+ 
+		PRINT totalPrice
+ 	END METHOD
+END CLASS
+END
+ 
+
+part2:-
+
+START 
+DEFINE CLASS Doctor
+	ATTRIBUTE name
+	ATTRIBUTE specialization
+	CONSTRUCTOR(name, specialization)
+		SET this.name=name
+		SET this.specialization=specialization
+	END CONSTRUCTOR
+	
+	METHOD getName()
+		PRINT name
+	END METHOD
+	
+
+	METHOD getSpecialization()
+		PRINT specialization
+	END METHOD
+END CLASS
+
+DEFINE CLASS Department
+	
+	ATTRIBUTE departMap (HashMap OF String, (List OF Doctor))
+
+	CONSTRUCTOR(departMap)
+		SET this.departMap=departMap
+	END CONSTRUCTOR
+
+END CLASS
+
+DEFINE CLASS Main
+	METHOD main()
+		OBJECT doctor1=Doctor("Dr Arpit" "Orthopadics")
+		OBJECT doctor2=Doctor("Dr Sharma" "Nurologist")
+		
+		ATTRIBUTE departMap (HashMap OF String, (List OF Doctor))	
+		
+		PUT departMap TO ("Orthopadic", Arrays AS List OF doctor1)
+		PUT departMap TO ("Nurologist", Arrays AS List OF doctor2)
+		
+		OBJECT dept1=Department(departMap)
+
+		ATTRIBUTE spectialiszationToSearch	
+		SET specializationToSearch TO "Nurologist
+		
+		FOR each key in departMap
+			ATTRIBUTE doctorList (List OF Doctor)
+			ADD doctorList TO values of key
+			
+			FOR each doctor in doctorList
+				IF getSpecialisation IS equals TO specializationToSearch THEN
+					PRINT "Department: "+key+ "Name of Doctor: "+ getName() OF doctor+" Specialization 					of Doctor: "+ getSpecialisation() OF doctor
+				END IF
+			END FOR
+		END FOR
+	END METHOD
+END CLASS
+END
+			
+
