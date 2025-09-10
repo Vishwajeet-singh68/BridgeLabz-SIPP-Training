@@ -2,6 +2,7 @@ package smartCityManagementSystem;
 
 public class BusService implements TransportService {
     private String schedule;
+    public int distance;    
     private double fare;
 
     public BusService(String schedule, double fare) {
