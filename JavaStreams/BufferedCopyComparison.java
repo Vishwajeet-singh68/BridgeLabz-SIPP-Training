@@ -1,3 +1,4 @@
+package JavaStreams;
 import java.io.*;
 
 public class BufferedCopyComparison {
